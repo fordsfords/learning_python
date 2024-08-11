@@ -26,8 +26,28 @@ See my [notes](notes.md).
 
 * https://docs.python.org/ - official doc home (multiple versions).
 * https://docs.python.org/3.11/library/stdtypes.html - Standard types.
+  + https://docs.python.org/3.11/library/stdtypes.html#text-sequence-type-str - string methods.
 * https://docs.python.org/3.11/library/functions.html - Library functions.
 * https://docs.python.org/3.11/reference/index.html - Language reference.
+
+### Coming from Perl
+
+Things for a Perl programmer to know when learning Python.
+
+* An assignment statement cannot be used as part of an expression.
+* Two statements can be placed on one logical line separateing them with a semicolon,
+but it is much frowned upon (and triggers flake8 warnings).
+* Python "print" includes a final newline.
+* You don't declare variables. Assignment sets the type.
+  + Presumably means that some errors Perl catches at compile time, Python must find at
+    run-time (assuming you can get the bad code to run).
+
+Rough Equivalences:
+| Python | Perl |
+|--------|------|
+| None   | undef |
+| [dict (dictionary)](https://docs.python.org/3.11/library/stdtypes.html#mapping-types-dict) | hash |
+
 
 
 ## System Changes
