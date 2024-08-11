@@ -41,6 +41,7 @@ but it is much frowned upon (and triggers flake8 warnings).
 * You don't declare variables. Assignment sets the type.
   + Presumably means that some errors Perl catches at compile time, Python must find at
     run-time (assuming you can get the bad code to run).
+* r"foo\tbar" - "raw string"; don't interpret \t as tab.
 
 Rough Equivalences:
 | Python | Perl |
