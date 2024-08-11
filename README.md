@@ -19,6 +19,8 @@ I don't think this will be interesting to anybody but me.
 Files named "skeleton.*" contain more stuff than the more-minimal "skel.*"
 files.
 
+See my [notes](notes.md).
+
 
 ## Resources
 
