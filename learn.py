@@ -4,14 +4,7 @@ Module for me to experiment with Python to learn it.
 """
 
 import re
-
-
-def inc(value):
-    """
-    Demo function.
-    """
-
-    return value + 1
+import incmod
 
 
 def main():
@@ -19,11 +12,13 @@ def main():
     Unit tests (only executed when module is run directly).
     """
 
-    assert inc(4) == 5
+    # Simple module
+    assert incmod.inc(4) == 5
 
-    assert inc(  # Don't need backslash for bracketed continuation lines.
-        4
-    ) == 5
+    # Bracketed continuation
+    assert incmod.inc(
+        4-1
+    ) == 5-1
 
     # Simple regular expression substitution.
     # Use \g<1> instead of \1 to get append of 00.
@@ -34,25 +29,25 @@ def main():
     # Unpacking
     first, second, third = [1, 2, 3]
     assert (first == 1) and (second == 2) and (third == 3)
-    first, *second, third = [1, 2, 3]
-    assert (first == 1) and (second == [2, ]) and (third == 3)
+    first, *secondlist, third = [1, 2, 3]
+    assert (first == 1) and (secondlist == [2, ]) and (third == 3)
 
     # Dict init.
     mydict = {'x': 42, 'y': 3.14, 'z': 'zee'}
     assert mydict['z'] == 'zee'
 
     # Ternary.
-    first = inc(1)
-    second = 'two' if first == 2 else 'not two'
-    assert second == 'two'
+    incmod_res = incmod.inc(1)
+    secondstr = 'two' if incmod_res == 2 else 'not two'
+    assert secondstr == 'two'
 
     # Division
-    first = 3.0
-    second = 2.0
-    third = first / second
-    assert third == 1.5
-    third = first // second
-    assert third == 1.0
+    firstfp = 3.0
+    secondfp = 2.0
+    thirdfp = firstfp / secondfp
+    assert thirdfp == 1.5
+    thirdfp = firstfp // secondfp
+    assert thirdfp == 1.0
 
     print('Bye!')
 

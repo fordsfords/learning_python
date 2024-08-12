@@ -16,7 +16,7 @@ I don't think this will be interesting to anybody but me.
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [System Changes](#system-changes)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Why apt install](#why-apt-install)  
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [License](#license)  
-<!-- TOC created by '../mdtoc/mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
+<!-- TOC created by '/home/sford/bin/mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
 <!-- mdtoc-end -->
 
 
@@ -96,6 +96,7 @@ For my vanilla WSL2 Ubuntu install, I did:
 sudo apt install python3-pip
 sudo apt install pylint
 sudo apt install flake8
+sudo apt install mypy
 ````
 
 
