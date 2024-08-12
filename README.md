@@ -1,4 +1,4 @@
-# learn_python
+# learning_python
 A repo for me to experiemnt with Python as I learn it.
 I don't think this will be interesting to anybody but me.
 
@@ -6,9 +6,15 @@ I don't think this will be interesting to anybody but me.
 ## Table of contents
 
 <!-- mdtoc-start -->
-&bull; [skeleton](#skeleton)  
+&bull; [learning_python](#learning_python)  
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [Table of contents](#table-of-contents)  
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [Introduction](#introduction)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Resources](#resources)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Coming from Perl](#coming-from-perl)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Lists vs Tuples](#lists-vs-tuples)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [One-Liners](#one-liners)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [System Changes](#system-changes)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Why apt install](#why-apt-install)  
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [License](#license)  
 <!-- TOC created by '../mdtoc/mdtoc.pl README.md' (see https://github.com/fordsfords/mdtoc) -->
 <!-- mdtoc-end -->
@@ -16,8 +22,7 @@ I don't think this will be interesting to anybody but me.
 
 ## Introduction
 
-Files named "skeleton.*" contain more stuff than the more-minimal "skel.*"
-files.
+I'm learning Python. This is my playground.
 
 See my [notes](notes.md).
 
@@ -48,7 +53,40 @@ Rough Equivalences:
 |--------|------|
 | None   | undef |
 | [dict (dictionary)](https://docs.python.org/3.11/library/stdtypes.html#mapping-types-dict) | hash |
+| tuple or list | array |
+| int is arbitrary precision | int is 32 or 64 bits |
+| x = a if b==1 else c | x = (b==1) ? a : b |
 
+
+### Lists vs Tuples
+
+Tuples are immutable, lists are mutable.
+
+By convention, lists frequently assumed to be homogeneous.
+Tuples can be heterogeneous.
+
+Tuples are hashable (e.g. can be used as dict keys).
+
+
+### One-Liners
+
+````
+python3 -c "import sys, re; exec('for line in sys.stdin:\n sys.stdout.write(re.sub(r\"foo\", \"bar\", line))')"
+````
+or using list comprehension:
+````
+python3 -c "import sys, re; [sys.stdout.write(re.sub(r'foo', 'bar', line)) for line in sys.stdin]"
+````
+or not one-liner:
+````
+echo "123foo456" | python3 -c "
+import sys, re
+for line in sys.stdin:
+    sys.stdout.write(re.sub(r\"foo\", \"bar\", line))" >learn.tmp
+````
+which, unfortunately, cannot be indented.
+
+But really, how often is a one-liner really needed that `sed` can't handle?
 
 
 ## System Changes
@@ -59,10 +97,9 @@ sudo apt install python3-pip
 sudo apt install pylint
 sudo apt install flake8
 ````
-See [Why apt install](#why-apt-install).
 
 
-## Why apt install
+### Why apt install
 
 Apparently you can use `pip` or `apt install` to install `pylint` and `flake8`.
 I chose `apt install` because, according to ChatGPT:
@@ -100,7 +137,7 @@ To the extent possible under law, the contributors to this project have
 waived all copyright and related or neighboring rights to this work.
 In other words, you can use this code for any purpose without any
 restrictions.  This work is published from: United States.  The project home
-is https://github.com/fordsfords/learn_python
+is https://github.com/fordsfords/learning_python
 
 To contact me, Steve Ford, project owner, you can find my email address
 at http://geeky-boy.com.  Can't see it?  Keep looking.

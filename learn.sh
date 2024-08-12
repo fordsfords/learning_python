@@ -12,6 +12,22 @@ ASSRT() {
 }  # ASSRT
 
 
+# First let's try a one-liner
+echo "123foo456" | python3 -c "import sys, re; [sys.stdout.write(re.sub(r'foo', 'bar', line)) for line in sys.stdin]" >learn.tmp
+ASSRT "$? -eq 0"
+egrep '123bar456' learn.tmp >/dev/null
+ASSRT "$? -eq 0"
+
+
+# Not one-liner:
+echo "123foo456" | python3 -c "
+import sys, re
+for line in sys.stdin:
+    sys.stdout.write(re.sub(r\"foo\", \"bar\", line))" >learn.tmp
+egrep '123bar456' learn.tmp >/dev/null
+ASSRT "$? -eq 0"
+
+
 flake8 learn.py
 ASSRT "$? -eq 0"
 
