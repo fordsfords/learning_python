@@ -24,7 +24,7 @@ I don't think this will be interesting to anybody but me.
 
 I'm learning Python. This is my playground.
 
-See my [notes](notes.md).
+See also `skeleton.py` in https://github.com/fordsfords/skeleton
 
 
 ## Resources
