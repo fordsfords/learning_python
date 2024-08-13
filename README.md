@@ -56,6 +56,11 @@ Rough Equivalences:
 | tuple or list | array |
 | int is arbitrary precision | int is 32 or 64 bits |
 | x = a if b==1 else c | x = (b==1) ? a : b |
+| if a is not None and a != 0: | if (a != undef && a != 0) |
+| line = re.sub(r'abc', 'xyz', line) | $line =~ s/abc/xyz/g; |
+| line = re.sub(r'abc', 'xyz', line, 1) | $line =~ s/abc/xyz/; |
+| if 'abc' in dict: | if (defined($dict{'abc'})) |
+| x += 1 | x++ |
 
 
 ### Lists vs Tuples
