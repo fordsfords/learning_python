@@ -10,6 +10,9 @@ def inc(value: Union[int, float]) -> Union[int, float]:
     Demo function.
     """
 
+    if value == 42:
+        raise ValueError("You're already at 42, what more do you want?")
+
     return value + 1
 
 

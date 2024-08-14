@@ -61,6 +61,7 @@ Rough Equivalences:
 | line = re.sub(r'abc', 'xyz', line, 1) | $line =~ s/abc/xyz/; |
 | if 'abc' in dict: | if (defined($dict{'abc'})) |
 | x += 1 | x++ |
+| pass | ; |
 
 
 ### Lists vs Tuples
