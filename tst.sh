@@ -1,5 +1,5 @@
 #!/bin/bash
-# learn.sh - test the "learn.py" program.
+# tst.sh - test.
 
 # Example: blah; ASSRT "$? -eq 0"
 ASSRT() {
@@ -10,6 +10,10 @@ ASSRT() {
     exit 1
   fi
 }  # ASSRT
+
+
+./bld.sh
+ASSRT "$? -eq 0"
 
 
 # First let's try a one-liner with list comprehension.
@@ -26,19 +30,6 @@ import sys, re
 for line in sys.stdin:
     sys.stdout.write(re.sub(r\"foo\", \"bar\", line))" >learn.tmp
 egrep '123bar456' learn.tmp >/dev/null
-ASSRT "$? -eq 0"
-
-
-echo flake8 learn.py incmod.py
-flake8 learn.py incmod.py
-ASSRT "$? -eq 0"
-
-echo pylint -sn -r n learn.py incmod.py
-pylint -sn -r n learn.py incmod.py
-ASSRT "$? -eq 0"
-
-echo mypy --check-untyped-defs learn.py incmod.py
-mypy --check-untyped-defs --no-error-summary learn.py incmod.py
 ASSRT "$? -eq 0"
 
 
