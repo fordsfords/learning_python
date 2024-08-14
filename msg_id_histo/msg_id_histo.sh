@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # msg_id_histo.sh
 
 # Example: blah; ASSRT "$? -eq 0"

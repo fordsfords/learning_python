@@ -1,5 +1,5 @@
 #!/bin/bash
-# bld.sh
+# learn.sh - test the "learn.py" program.
 
 # Example: blah; ASSRT "$? -eq 0"
 ASSRT() {
@@ -10,15 +10,6 @@ ASSRT() {
     exit 1
   fi
 }  # ASSRT
-
-for F in *.md; do :
-  if egrep "<!-- mdtoc-start -->" $F >/dev/null; then :
-    # Update doc table of contents (see https://github.com/fordsfords/mdtoc).
-    if which mdtoc.pl >/dev/null 2>&1; then LANG=C mdtoc.pl -b "" $F;
-    elif [ -x ../mdtoc/mdtoc.pl ]; then LANG=C ../mdtoc/mdtoc.pl -b "" $F;
-    else echo "FYI: mdtoc.pl not found; Skipping doc build"; echo ""; fi
-  fi
-done
 
 
 # First let's try a one-liner with list comprehension.
@@ -46,14 +37,11 @@ echo pylint -sn -r n learn.py incmod.py
 pylint -sn -r n learn.py incmod.py
 ASSRT "$? -eq 0"
 
-#echo mypy --check-untyped-defs learn.py incmod.py
-#mypy --check-untyped-defs --no-error-summary learn.py incmod.py
-echo mypy learn.py incmod.py
-mypy --no-error-summary learn.py incmod.py
+echo mypy --check-untyped-defs learn.py incmod.py
+mypy --check-untyped-defs --no-error-summary learn.py incmod.py
 ASSRT "$? -eq 0"
 
 
 echo ./learn.py
 ./learn.py
 ASSRT "$? -eq 0"
-echo "Build OK"
