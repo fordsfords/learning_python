@@ -2,10 +2,8 @@
 incmod.py - Simple module.
 """
 
-from typing import Union
 
-
-def inc(value: Union[int, float]) -> Union[int, float]:
+def inc(value, inc_by=1):
     """
     Demo function.
     """
@@ -13,7 +11,7 @@ def inc(value: Union[int, float]) -> Union[int, float]:
     if value == 42:
         raise ValueError("You're already at 42, what more do you want?")
 
-    return value + 1
+    return value + inc_by
 
 
 def selftest():

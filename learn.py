@@ -17,6 +17,10 @@ def main():
 
     # Simple module
     assert incmod.inc(4) == 5
+    assert incmod.inc(4, inc_by=2) == 6
+    assert incmod.inc(value=4, inc_by=3) == 7
+    assert incmod.inc(4, 4) == 8
+    assert incmod.inc(inc_by=5, value=4) == 9
 
     # Bracketed continuation
     assert incmod.inc(
@@ -91,7 +95,7 @@ def main():
     assert fourthl[-1] == 99
 
     # Next level copy
-    fifthl = list()
+    fifthl = []
     fifthl[:] = thirdl
     # They are equal but not the same
     assert fifthl is not fourthl
