@@ -9,8 +9,9 @@ I don't think this will be interesting to anybody but me.
 &bull; [learning_python](#learning_python)  
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [Table of contents](#table-of-contents)  
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [Introduction](#introduction)  
-&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Resources](#resources)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Coming from Perl](#coming-from-perl)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Resources](#resources)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Workflow](#workflow)  
+&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Coming from Perl](#coming-from-perl)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [Lists vs Tuples](#lists-vs-tuples)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull; [One-Liners](#one-liners)  
 &nbsp;&nbsp;&nbsp;&nbsp;&bull; [System Changes](#system-changes)  
@@ -27,7 +28,7 @@ I'm learning Python. This is my playground.
 See also `skeleton.py` in https://github.com/fordsfords/skeleton
 
 
-## Resources
+### Resources
 
 * https://docs.python.org/ - official doc home (multiple versions).
 * https://docs.python.org/3.11/library/stdtypes.html - Standard types.
@@ -35,7 +36,28 @@ See also `skeleton.py` in https://github.com/fordsfords/skeleton
 * https://docs.python.org/3.11/library/functions.html - Library functions.
 * https://docs.python.org/3.11/reference/index.html - Language reference.
 
-### Coming from Perl
+## Workflow
+
+I'm going to try using [ruff](https://docs.astral.sh/ruff/) to reformat my
+code with every build.
+Ruff claims to be pretty much identical to
+[black](https://pypi.org/project/black/),
+which I'm led to believe is very popular and has helped to make various best
+practices widespread.
+
+However, since I like to stay inside vim when I run a build,
+that means the build might change my source file out from under me,
+and vim doesn't seem to check for that very often
+(doing a `:sh` does check when it returns, but not a `:terminal`).
+So [Claude](https://https://claude.ai/) wrote a .vimrc function
+that does an `:only`, `:w`, runs the build, checks for modified file,
+and prompts for reload.
+See [my_env](https://github.com/fordsfords/my_env) file `Vimrc`.
+
+So I edit with vim, then enter `:bld` or `:tst` to write my file
+run the `bld.sh` or `tst.sh` script respectively.
+
+## Coming from Perl
 
 Things for a Perl programmer to know when learning Python.
 
@@ -103,6 +125,7 @@ sudo apt install python3-pip
 sudo apt install pylint
 sudo apt install flake8
 sudo apt install mypy
+pip install ruff
 ````
 
 

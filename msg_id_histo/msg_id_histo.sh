@@ -12,6 +12,11 @@ ASSRT() {
 }  # ASSRT
 
 
+echo ruff
+ruff format -q msg_id_histo.py
+ruff check -q msg_id_histo.py
+ASSRT "$? -eq 0"
+
 echo flake8 msg_id_histo.py
 flake8 msg_id_histo.py
 ASSRT "$? -eq 0"

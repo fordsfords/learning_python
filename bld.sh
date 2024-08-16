@@ -21,8 +21,13 @@ for F in *.md; do :
 done
 
 
+echo ruff format -q learn.py incmod.py
+ruff format -q learn.py incmod.py
+ASSRT "$? -eq 0"
+
 echo ruff check -q learn.py incmod.py
 ruff check -q learn.py incmod.py
+ASSRT "$? -eq 0"
 
 echo flake8 learn.py incmod.py
 flake8 learn.py incmod.py
