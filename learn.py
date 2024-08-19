@@ -8,6 +8,24 @@ import re
 import incmod
 
 
+def sub_and_capture(pattern, repl, in_string):
+    """
+    Function to substitute a pattern and return a tuple of the new string,
+    the number of substitutions (0 or 1) and a list of capture groups.
+    Thanks to Amadan at https://stackoverflow.com/a/36196325/3998491 and
+    to https://claude.ai for assistance.
+    """
+
+    def repl_funct(match):
+        nonlocal rtn_match
+        rtn_match = match
+        return match.expand(repl)
+
+    rtn_match = None
+    new_string, num_subs = re.subn(pattern, repl_funct, in_string, count=1)
+    return new_string, num_subs, rtn_match
+
+
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 def main():
@@ -41,6 +59,18 @@ def main():
     line = 'id="1234" name="Steve\'s Place"'
     mod_line = re.sub(r'id="(\d+)"\s+name="([^"]+)"', r"\2 \g<1>00", line)
     assert mod_line == "Steve's Place 123400"
+
+    line = "abcabcabc"
+    line, num_subs, match = sub_and_capture(r"a", "A", line)
+    # match.groups() (plural) returns a tuple of all the groups.
+    assert (line == "Abcabcabc") and (num_subs == 1) and (match.groups() == ())
+    line, num_subs, match = sub_and_capture(r"a", "A", line)
+    assert (line == "AbcAbcabc") and (num_subs == 1) and (match.groups() == ())
+    line, num_subs, match = sub_and_capture(r"z", "A", line)
+    assert (line == "AbcAbcabc") and (num_subs == 0) and (match is None)
+    line, num_subs, match = sub_and_capture(r"a(.)c", r"\1\1\1", line)
+    # match.group(1) (singular) the string matched within group 1
+    assert (line == "AbcAbcbbb") and (num_subs == 1) and (match.group(1) == "b")
 
     # Ternary.
     incmod_res = incmod.inc(1)

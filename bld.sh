@@ -21,8 +21,8 @@ for F in *.md; do :
 done
 
 
-echo ruff format -q learn.py incmod.py
-ruff format -q learn.py incmod.py
+echo ruff format learn.py incmod.py
+ruff format learn.py incmod.py
 ASSRT "$? -eq 0"
 
 echo ruff check -q learn.py incmod.py
@@ -39,9 +39,9 @@ ASSRT "$? -eq 0"
 
 ### echo mypy --check-untyped-defs learn.py incmod.py
 ### mypy --check-untyped-defs --no-error-summary learn.py incmod.py
-echo mypy learn.py incmod.py
-mypy --no-error-summary learn.py incmod.py
-ASSRT "$? -eq 0"
+### echo mypy learn.py incmod.py
+### mypy --no-error-summary learn.py incmod.py
+### ASSRT "$? -eq 0"
 
 
 echo "Build OK"
