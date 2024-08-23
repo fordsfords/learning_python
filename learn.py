@@ -8,6 +8,31 @@ import re
 import incmod
 
 
+# pylint: disable=too-few-public-methods
+class Scaler:
+    """Class to multiply things by constant amounts."""
+
+    # Class attributes (variables).
+    _largest_factor_used = 0
+
+    # Making this a class method makes it more inheritence friendly,
+    # although this class is very unlikely to be used as a base class.
+    @classmethod
+    def check_scale_factor(cls, scale_factor):
+        """Method to keep track of the largest scale factor used."""
+        if scale_factor > cls._largest_factor_used:
+            cls._largest_factor_used = scale_factor
+
+    def __init__(self, scale_factor):
+        # All instance variables must be "declared" here.
+        self.scale_factor = scale_factor
+        self.check_scale_factor(scale_factor)
+
+    def scale(self, value):
+        """Scale a value by the saved factor."""
+        return value * self.scale_factor
+
+
 def sub_and_capture(pattern, repl, in_string):
     """
     Function to substitute a pattern and return a tuple of the new string,
@@ -224,6 +249,14 @@ def main():
     assert listc2[0] == 1
     assert listc2[1] == 9
     assert listc2[-1] == 9
+
+    scaler10 = Scaler(10)
+    scaler2 = Scaler(2)
+    assert scaler2.scale(5) == 10
+    assert scaler10.scale(5) == 50
+    # Python allows the following line, but pylint complains that it is protected.
+    # pylint: disable=protected-access
+    assert Scaler._largest_factor_used == 10
 
     print("Bye!")
 
